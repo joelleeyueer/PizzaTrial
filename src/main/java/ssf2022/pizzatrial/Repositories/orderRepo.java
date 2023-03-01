@@ -4,6 +4,7 @@ import java.io.Reader;
 import java.io.StringReader;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,7 @@ import ssf2022.pizzatrial.Models.Pizza;
 @Repository
 public class orderRepo {
     
-    @Autowired
+    @Autowired @Qualifier("pizza")
     RedisTemplate<String, String> template;
     
     public void addOrder(String Id, Cart cart, Pizza pizza, double totalCost){
